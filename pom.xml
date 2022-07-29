@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.yang.springcloud</groupId>
+  <artifactId>mscloud</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>cloud-provider-payment8001</module>
+    <module>cloud-api-base</module>
+    <module>cloud-consumer-order80</module>
+    <module>cloud-eureka-server7001</module>
+    <module>cloud-eureka-server7002</module>
+    <module>cloud-provider-payment8002</module>
+  </modules>
+
+  <!-- 统一管理 jar 包版本 -->
+  <properties>
+    <yang.version>1.0.0</yang.version>
+    <thoth-core.version>1.0.0</thoth-core.version>
+    <thoth-protobuf.version>1.0.0</thoth-protobuf.version>
+    <thoth-aliyun.version>1.0.0</thoth-aliyun.version>
+    <nacos.version>1.2.1</nacos.version>
+    <fastjson.version>1.2.73</fastjson.version>
+    <druid-boot.version>1.1.10</druid-boot.version>
+    <mybatis-boot.version>2.1.0</mybatis-boot.version>
+    <mysql-connector.version>8.0.16</mysql-connector.version>
+    <mssql-jdbc.version>8.2.2.jre8</mssql-jdbc.version>
+    <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
+    <jjwt.version>0.11.0</jjwt.version>
+    <hutool.version>5.3.7</hutool.version>
+    <sauronsoftware.version>1.0.2</sauronsoftware.version>
+    <aliyun.sdk.core>3.2.8</aliyun.sdk.core>
+    <aliyun.sdk.push>3.10.0</aliyun.sdk.push>
+    <commons.collections>3.2.2</commons.collections>
+    <commons.beanutils>1.9.4</commons.beanutils>
+    <commons.pool2>2.8.0</commons.pool2>
+    <swagger.version>2.9.2</swagger.version>
+    <protobuf.version>3.6.1</protobuf.version>
+    <log4j2.version>2.16.0</log4j2.version>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+    <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+    <spring-cloud-openfeign.version>2.2.6.RELEASE</spring-cloud-openfeign.version>
+    <spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+    <feign-form>3.8.0</feign-form>
+  </properties>
+
+  <!-- 子模块继承之后，提供作用：锁定版本+子modlue不用写groupId和version  -->
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+
+      <!--spring boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--spring cloud -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--spring cloud alibaba -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- mybatis + druid + mysql + mssql-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>${mssql-jdbc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>${pagehelper-starter.version}</version>
+      </dependency>
+      <!-- mybatis + druid + mysql + mssql-->
+
+      <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>${commons.collections}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>${commons.beanutils}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
